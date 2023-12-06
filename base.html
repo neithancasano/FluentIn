@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"></script>
+		-->
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<style>
+
+
+			#title {
+			  font-family: "Helvetica Neue", Arial, sans-serif; 
+			  font-weight: 300; 
+			  font-size: 2.5rem; 
+			  color: #ddd; 
+			  letter-spacing: 1px; 
+			  text-align: center; 
+			  margin: 20px 0; 
+			}
+			
+			#title:hover {
+			  color: #007BFF; 
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+				background: linear-gradient(to bottom, #3498db, #1abc9c); 
+				position: relative;
+			}
+
+			
+    body::before {
+      content: "FluentIn v1.3.10122023";
+      position: absolute;
+      bottom: -15px; 
+      width: 100%; 
+      height: 80px; 
+      background: #ffffff; 
+      border-radius: 60% 100% 0 0 / 60% 100% 0 0; 
+      z-index: -1;
+	  
+	  text-align: center; 
+      line-height: 80px; 
+      font-size: 1.5rem; 
+      color: #6600cc; 
+    }
+	
+    h1 {
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      z-index: 2; 
+    }
+
+    /* Pseudo-element for creating a top divider with the title */
+    body::after {
+      content: "FluentIn";
+      position: absolute;
+      top: 0px; 
+      width: 100%; 
+      height: 80px; 
+      background: #ffffff; 
+      border-radius: 0 0 60% 100% / 0 0 60% 100%; 
+      text-align: center; 
+      line-height: 80px; 
+      font-size: 2.5rem; 
+      color: #6600cc; 
+      z-index: 1;
+    }
+
+	  #generalheader {
+		position: relative; 
+		top: 150px; 
+        background-color: rgba(250, 250, 250, 0.6); 
+        border: 2px solid #1abc9c; 
+        border-radius: 15px; 
+        padding: 20px; 
+		margin-left: 15%;
+		margin-right: 15%;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+	  }
+	 
+	  
+    h3 {
+		color: #1163ac;
+        font-family: 'Arial', sans-serif; 
+    }
+
+    p {
+        font-family: 'Arial', sans-serif; 
+		color: #367588;
+		position: relative;
+    }
+	
+	audio {
+		width: 90% !important; 
+		max-width: 90% !important; 
+    }
+	  
+	  #trainingarea {
+		  position: relative;
+		  top: 100px;
+		  text-align: center;
+		  background: rgba(255, 255, 255, 0.3); 
+		  padding: 20px;
+		  border: 2px solid #3498db; 
+		  border-radius: 10px; 
+		  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+		  font-family: 'Arial', sans-serif; 
+		  font-size: 16px;
+		  color: #000; 
+		  margin-left: 30%;
+		  margin-right: 30%;
+		  margin-top: 5%;
+		}
+
+		h4 {
+		  display: none; 
+		  font-family: 'Arial', sans-serif; 
+		  font-size: 1.2rem; 
+		  background: rgba(255, 255, 255, 0.7); 
+		  padding: 8px 16px; 
+		  border: 2px solid #3498db; 
+		  border-radius: 5px; 
+		  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+		  color: #000; 
+		  margin: 10px 0; 
+		}
+	  
+
+	input[type="text"] {
+		background: rgba(255, 255, 255, 0.4); 
+		border: none;
+		border-bottom: 1px solid #7e7e7e; 
+		padding: 10px;
+		color: #22228d; 
+		font-size: 16px;
+		border-radius: 5px;
+		margin-bottom: 10px;
+		margin-top: 10px;
+		margin-right: 5px;
+	}
+	input[type="text"]::placeholder {
+		color: #222263;
+	}
+
+	/* Style for buttons */
+	button {
+		background: #2E5A85; 
+		color: #FFF; 
+		border: none;
+		padding: 10px 20px;
+		font-size: 16px;
+		border-radius: 5px; 
+		cursor: pointer;
+		transition: background 0.3s; 
+		margin-left: 5px;
+		vertical-align: middle;
+	}
+	
+	.showText {
+		font-size: 18px; 
+		height: 38px; 
+		padding: 0 20px; 
+		vertical-align: middle;
+		transition: background 0.3s ease, color 0.3s ease; 
+	}
+
+	.showText:hover {
+		background: #FFD700; 
+		color: #fff; 
+	}
+	
+	#nextbutton {
+		display: block;
+		margin-top: 15%;
+		align: center;
+		font-size: 20px; 
+		padding: 10px 20px;
+	}
+	
+	.button-container {
+		  display: flex;
+		  justify-content: center;
+	}
+	
+	#nextbutton_gpt {
+		display: block;
+		margin-top: 1%; 
+		align: center;
+		font-size: 20px; 
+		padding: 10px 20px;
+	}
+
+	.button-container2 {
+		  display: flex;
+		  justify-content: center;
+	}
+
+	/* Change button background color on hover */
+	button:hover {
+		background: #1E3A57;
+	}
+
+	/* Define the shake animation */
+	@keyframes shake {
+	  0% { transform: translateX(0); background-color: transparent;}
+	  25% { transform: translateX(-5px); }
+	  50% { transform: translateX(5px); background-color: #ffdfd5;}
+	  75% { transform: translateX(-5px); }
+	  100% { transform: translateX(5px); background-color: transparent;}
+	}
+
+	/* Apply the shake animation to an element with this class */
+	.shake {
+	  animation: shake 0.3s ease-in-out;
+	}
+	
+	.correct-animation {
+	  animation: enlarge 0.3s ease-out;
+	}
+	
+	@keyframes hint {
+		0% {
+			transform: translateY(0); /* Initial position */
+		}
+		50% {
+			transform: translateY(-20px); /* Bounce up halfway */
+		}
+		100% {
+			transform: translateY(0); /* Return to the original position */
+		}
+	}
+
+	/* Apply the "hint" animation to an element with a class (e.g., .bounce) */
+	.bounce {
+		animation: hint 0.5s; /* 0.5s duration for the bounce animation */
+	}
+	
+	.bounce2 {
+		animation: hint 0.5s; /* 0.5s duration for the bounce animation */
+		animation-delay: 1s;
+	}
+
+	@keyframes enlarge {
+	  0% {
+		transform: scale(1);
+		background-color: transparent;
+	  }
+	  50% { background-color: #87FA00; }
+	  100% {
+		transform: scale(1.2);
+		background-color: transparent;
+	  }
+	}
+	
+	.highlight {
+	  animation: highlight 0.5s;
+	}
+
+	@keyframes highlight {
+	  0% { background-color: transparent; }
+	  50% { background-color: yellow; }
+	  100% { background-color: transparent; }
+	}
+
+	/* Add a class to hide the debugging panels */
+	.hidden {
+		display: none;
+	}
+
+	hr {
+		border: none; /* Remove the default border */
+		background: rgba(255, 255, 255, 0.5); /* Translucent white background */
+		height: 2px; /* Adjust the thickness of the line as needed */
+		margin: 10% 0; /* Margin for top and bottom */
+	}
+
+	@keyframes glowingText {
+		0% {
+			color: #FFEFFF;
+			text-shadow: 0 0 30px aqua;
+		}
+		50% {
+			color: white;
+			text-shadow: 0 0 10px gray;
+		}
+		100% {
+			color: #FFEFFF;
+			text-shadow: 0 0 30px aqua;
+		}
+	}
+
+	/* Apply the animation to an element with a class (e.g., .glow-text) */
+	.glow-text {
+		animation: glowingText 3s infinite; /* Adjust the duration as needed */
+	}
+
+  /* Styles for mobile screens */
+  @media (max-width: 768px) {
+    #title {
+      font-size: 2.5rem; /* Adjust the font size for mobile screens */
+    }
+
+    h1 {
+      padding: 80px 0; /* Adjust the top padding for smaller screens */
+    }
+
+    #generalheader {
+      top: 100px; /* Adjust the position from the top for smaller screens */
+      margin-left: 5%; /* Adjust the left margin for smaller screens */
+      margin-right: 5%; /* Adjust the right margin for smaller screens */
+    }
+
+    #trainingarea {
+      top: 50px; /* Adjust the top position for smaller screens */
+      margin-left: 5%; /* Adjust the left margin for smaller screens */
+      margin-right: 5%; /* Adjust the right margin for smaller screens */
+      margin-top: 15%;
+    }
+
+    /* Make the audio player bigger */
+    audio {
+		width: 100% !important; /* Override inline style */
+		max-width: 100% !important; /* Override inline style */
+    }
+
+    /* Make the input text box and check buttons bigger */
+    input[type="text"] {
+      padding: 14px; /* Increase padding for larger text box */
+      font-size: 18px; /* Increase font size for readability */
+    }
+
+    button {
+      padding: 12px 24px; /* Increase padding for larger buttons */
+      font-size: 18px; /* Increase font size for readability */
+    }
+		
+	  p {
+		font-size: 18px; /* Increase font size for readability */
+		padding: 10px; /* Increase padding for spacing */
+	  }
+	  
+	#nextbutton {
+		display: block;
+		margin-top: 25%;
+		align: center;
+	}
+  }
+
+  /* Styles for tablet screens */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #title {
+      font-size: 2.2rem; /* Adjust the font size for tablet screens */
+    }
+
+    h1 {
+      padding: 90px 0; /* Adjust the top padding for tablet screens */
+    }
+
+    #generalheader {
+      top: 125px; /* Adjust the position from the top for tablet screens */
+      margin-left: 10%; /* Adjust the left margin for tablet screens */
+      margin-right: 10%; /* Adjust the right margin for tablet screens */
+    }
+
+    #trainingarea {
+      top: 75px; /* Adjust the top position for tablet screens */
+      margin-left: 10%; /* Adjust the left margin for tablet screens */
+      margin-right: 10%; /* Adjust the right margin for tablet screens */
+      margin-top: 15%;
+    }
+	audio {
+		width: 100% !important; /* Override inline style */
+		max-width: 100% !important; /* Override inline style */
+    }
+	/* Make the input text box and check buttons bigger */
+    input[type="text"] {
+      padding: 14px; /* Increase padding for larger text box */
+      font-size: 18px; /* Increase font size for readability */
+    }
+  }
+  
+  /* Styles for the GPT generated words placeholder */
+
+	/* Base styles for both divs */
+	#gptgeneratedwords {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border-radius: 10px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		background: rgba(255, 255, 255, 0.2); /* Semi-transparent white for glass effect */
+		color: white; /* White text */
+		padding: 20px;
+		margin: 10px;
+		font-size: 1.2em;
+	}
+
+	#loading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 20px;
+		margin: 10px;
+		font-size: 1.2em;
+	}
+
+	/* Specific styles for loading div */
+	#loading {
+		animation: rotate 2s linear infinite; /* Animation name, duration, timing, iteration */
+	}
+
+	/* Animation keyframes */
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	/* Media query for responsiveness */
+	@media (max-width: 600px) {
+		#loading, #gptgeneratedwords {
+			width: 80%;
+			font-size: 1em;
+		}
+	}
+
+		</style>
+		
+
+	</head>
+
+	<body>
+
+	<!-- <h1 id="title" > FluentIn </h1> -->
+
+	<div id="generalheader">
+	
+		<audio src="http://54.251.238.67:8000/letsstart.mp3" autoplay></audio>
+		<h3 id="gh_header"> Instructions </h3>
+		<p id="gh_content"> Let's start! Please translate the following Korean words into English. Click the audio to hear the word! Then write your English translation in the textbox provided. <b>Press 9 to show/hide answer key</b>. </p>
+		
+	</div>
+	
+	<div id="trainingarea" align="center">
+	</div>
+	
+	<div class="button-container">
+		<button id="nextbutton"> Generate Next Set of Words </button>
+	</div>
+	
+	<div class="button-container2" onclick="getNewWord()">
+		<button id="nextbutton_gpt" > Generate Next Set of Words (GPT 4.0 fine-tuning test) </button>
+	</div>
+
+	<div id="loading" style="display: none;">
+		<!-- Your loading animation here -->
+		<img src="http://54.251.238.67:8000/loading.png" width="100" height="100" alt="Loading"></img>
+	</div>
+	
+	<div id="gptgeneratedwords" style="display:none;">
+	
+	</div>
+	
+	<script>
+
+
+
+        // Example usage:
+        compareText("correct", "is correct").then(similar => {
+            console.log(`The phrases are ${similar ? '' : 'not '}similar.`);
+        });
+	
+	function playAudio(url) {
+		new Audio(url).play();
+	}
+	
+	var k = 0;
+	
+	document.addEventListener("DOMContentLoaded", function() {
+
+		var Ljs = {{L | safe}};
+		// alert(Ljs);
+		var div = document.getElementById("trainingarea");
+		  
+		var numberOfElements = 6; // base word plus 5 random sentences
+		
+		var nextButton = document.getElementById("nextbutton"); // press to generate fresh set of words
+		nextButton.disabled	= false;
+		
+		var correctTranslations = -1;
+		
+		const completedWords = []; // to hold list of completed words
+		var gh_headerjs = document.getElementById("gh_header");
+		var gh_contentjs = document.getElementById("gh_content");
+		
+
+		for (var i = 1, j = 0; i <= numberOfElements; i++, j++) {
+		
+			// Create the heading
+			var heading = document.createElement("h3");
+			if (i == 1)
+				heading.textContent = "Base word";
+			else
+				heading.textContent = "Phrase / Sentence #" + j;
+			div.appendChild(heading);
+			
+			// Create the audio element
+			var audio = document.createElement("audio");
+			audio.src = "http://54.251.238.67:8000/tts/L" + {{Litem}} + j + ".mp3";
+			audio.controls = true;
+			div.appendChild(audio);
+			
+			var lineBreak = document.createElement("br");
+			div.appendChild(lineBreak);
+			
+			
+			// Create the input element
+			var input = document.createElement("input");
+			input.type = "text";
+			input.id = "text_word" + i;
+			input.placeholder = "Write your translation here.";
+			
+			div.appendChild(input);
+
+			// Create the "Check" button
+			var button = document.createElement("button");
+			button.id = "checkButton" + i;
+			button.textContent = "Check";
+			div.appendChild(button);
+
+			// Create the "Show Text" button
+			var showtext = document.createElement("button");
+			showtext.id = "showText" + i;
+			showtext.classList.add("showText");
+			showtext.textContent = "❔";
+			div.appendChild(showtext);
+			
+			var lineBreak = document.createElement("br");
+			div.appendChild(lineBreak);
+			
+			// Create the status/result area
+			var result = document.createElement("h4");
+			result.id = "result" + i;
+			div.appendChild(result);
+			
+			// create debugging panel
+			var debugging = document.createElement("p");
+			debugging.style.color = "#cfc";
+			debugging.classList.add("debugging");
+			debugging.textContent = "[key for debugging] word" + i + ": " + Ljs[{{Litem}}][j][0] + " - " + Ljs[{{Litem}}][j][1];
+			div.appendChild(debugging);
+			
+			if (i < numberOfElements){
+				var hr = document.createElement("hr");
+				div.appendChild(hr);
+			}
+			
+			const inputElement = document.getElementById('text_word' + i);
+			const resultElement = document.getElementById('result' + i);
+			const checkButton = document.getElementById('checkButton' + i);
+			const showtextButton = document.getElementById('showText' + i);
+			
+		  (function (i, j) {
+			checkButton.addEventListener('click', function () {
+			  // Get the value of the input element
+			  const inputValue = inputElement.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+
+			  // Use the captured k value
+			  // alert(Ljs[{{Litem}}][j][1]);
+
+			  if (inputValue.toLowerCase().replace(".", "") 
+					== Ljs[{{Litem}}][j][1].toLowerCase().replace(".", "")) {
+					
+				resultElement.textContent = 'Correct! ' +
+											Ljs[{{Litem}}][j][0] + " : " +
+											Ljs[{{Litem}}][j][1];
+				resultElement.style.color = "green";
+				resultElement.style.display = "inline-block";
+				
+				playAudio("http://54.251.238.67:8000/correctanswer.mp3");
+				playAudio("http://54.251.238.67:8000/correctkorean.mp3");
+				
+				// resultElement.classList.remove("highlight");
+				resultElement.classList.remove("correct-animation");
+				resultElement.classList.remove("shake");
+				resultElement.classList.remove("bounce");
+				
+				void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+				
+				// resultElement.classList.add('highlight');
+				resultElement.classList.add("correct-animation");
+				
+				var answer = inputElement.value;
+				inputElement.value  = "";
+				inputElement.placeholder  = "✅ " + answer;
+				
+				inputElement.disabled = true;
+				checkButton.disabled = true;
+				showtextButton.disabled = true;
+				
+				focusOnNextInput(inputElement);
+				
+				correctTranslations++;
+
+                // Check if all translations are correct and enable the "Next" button
+                if (correctTranslations === numberOfElements-1) {
+                    nextButton.disabled = false; // Enable the "Next" button
+					playAudio("http://54.251.238.67:8000/nextunlocked.mp3");
+					createNewTranslationSet();
+					
+					gh_headerjs.innerHTML = "Completed Words";
+					completedWords.push(Ljs[{{Litem}}][0][0] + " - " + Ljs[{{Litem}}][0][1]);
+					var t = completedWords.join("<br>");
+					gh_contentjs.innerHTML = t;
+					
+					gh_contentjs.classList.remove("bounce2");
+					gh_contentjs.classList.remove("glow-text");
+					void gh_contentjs.offsetWidth;
+					gh_contentjs.classList.add("bounce2");
+					gh_contentjs.classList.add("glow-text");
+                }
+				
+				
+			  } else {
+				resultElement.textContent = 'Incorrect!';
+				resultElement.style.color = "red";
+				resultElement.style.display = "inline-block";
+				
+				playAudio("http://54.251.238.67:8000/wronganswer.mp3");
+				playAudio("http://54.251.238.67:8000/wrongkorean.mp3");
+				
+				// resultElement.classList.remove("highlight");
+				resultElement.classList.remove("correct-animation");
+				resultElement.classList.remove("shake");
+				resultElement.classList.remove("bounce");
+				
+				void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+				resultElement.classList.add("shake");
+				
+				var answer = inputElement.value;
+				inputElement.value  = "";
+				inputElement.placeholder  = "❌ " + answer;
+			  }
+			  
+			  
+			});
+			
+			inputElement.addEventListener('keydown', function (event) {
+			  if (event.key === 'Enter') {
+				event.preventDefault(); // Prevent the default Enter key behavior (e.g., new line)
+				checkButton.click(); // Simulate a click on the checkButton
+			  }
+			});		
+			
+			showtextButton.addEventListener('click', function() {
+				
+				resultElement.textContent = Ljs[{{Litem}}][j][0];
+				resultElement.style.color = "#05696B";
+				resultElement.style.display = "inline-block";
+				resultElement.classList.add("bounce");
+				
+				playAudio("http://54.251.238.67:8000/showtext.mp3");
+				
+			});
+			
+			
+		  })(i, j);
+		  
+		}
+		
+		// Create an event listener for the '9' key press
+		document.addEventListener('keydown', function(event) {
+			if (event.key === '9' || event.key === '9') {
+				// Toggle the visibility of all debugging panels
+				const debuggingPanels = document.querySelectorAll('.debugging');
+				debuggingPanels.forEach(panel => {
+					panel.classList.toggle('hidden');
+				});
+				playAudio("http://54.251.238.67:8000/toggleanswerkey.mp3");
+			}
+		});
+			
+		// Function to handle the focus on the next input
+		function focusOnNextInput(currentInput) {
+			const inputs = Array.from(document.querySelectorAll('input[type="text"]'));
+			const currentIndex = inputs.indexOf(currentInput);
+			const nextIndex = (currentIndex + 1) % inputs.length;
+			
+			inputs[nextIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+			
+			inputs[nextIndex].focus();
+		}
+
+		// Add an event listener to all input elements to handle Tab key press
+		document.querySelectorAll('input[type="text"]').forEach((input) => {
+			input.addEventListener('keydown', function (event) {
+				if (event.key === 'Tab') {
+					event.preventDefault(); // Prevent the default Tab behavior
+					focusOnNextInput(input);
+				}
+			});
+		});
+		
+		function createNewTranslationSet() {
+			div.innerHTML = ''; // Clear the existing content in the training area
+			correctTranslations = -1;
+			
+			// Replace this with your logic to generate a random number for the new translation set
+			var randomIndex = Math.floor(Math.random() * 23);
+
+			for (var i = 1, j = 0; i <= numberOfElements; i++, j++) {
+
+				// Create the heading
+				var heading = document.createElement("h3");
+				if (i == 1)
+					heading.textContent = "Base word";
+				else
+					heading.textContent = "Phrase / Sentence #" + j;
+				div.appendChild(heading);
+				
+				// Create the audio element
+				var audio = document.createElement("audio");
+				audio.src = "http://54.251.238.67:8000/tts/L" + randomIndex + j + ".mp3";
+				audio.controls = true;
+				div.appendChild(audio);
+				
+				var lineBreak = document.createElement("br");
+				div.appendChild(lineBreak);
+				
+				
+				// Create the input element
+				var input = document.createElement("input");
+				input.type = "text";
+				input.id = "text_word" + i;
+				input.placeholder = "Write your translation here.";
+				
+				div.appendChild(input);
+
+				// Create the "Check" button
+				var button = document.createElement("button");
+				button.id = "checkButton" + i;
+				button.textContent = "Check";
+				div.appendChild(button);
+
+				// Create the "Show Text" button
+				var showtext = document.createElement("button");
+				showtext.id = "showText" + i;
+				showtext.classList.add("showText");
+				showtext.textContent = "❔";
+				div.appendChild(showtext);				
+				
+				var lineBreak = document.createElement("br");
+				div.appendChild(lineBreak);
+				
+				// Create the status/result area
+				var result = document.createElement("h4");
+				result.id = "result" + i;
+				div.appendChild(result);
+				
+				// create debugging panel
+				var debugging = document.createElement("p");
+				debugging.style.color = "#cfc";
+				debugging.classList.add("debugging");
+				debugging.textContent = "[key for debugging] word" + i + ": " + Ljs[randomIndex][j][0] + " - " + Ljs[randomIndex][j][1];
+				div.appendChild(debugging);
+
+				if (i < numberOfElements){
+					var hr = document.createElement("hr");
+					div.appendChild(hr);
+				}
+				
+				const inputElement = document.getElementById('text_word' + i);
+				const resultElement = document.getElementById('result' + i);
+				const checkButton = document.getElementById('checkButton' + i);
+				const showtextButton = document.getElementById('showText' + i);
+				
+			  (function (i, j) {
+				checkButton.addEventListener('click', function () {
+				  // Get the value of the input element
+				  const inputValue = inputElement.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+
+				  // Use the captured k value
+				  // alert(Ljs[{{Litem}}][j][1]);
+
+				  if (inputValue.toLowerCase().replace(".", "") 
+						== Ljs[randomIndex][j][1].toLowerCase().replace(".", "")) {
+						
+					resultElement.textContent = 'Correct! ' +
+												Ljs[randomIndex][j][0] + " : " +
+												Ljs[randomIndex][j][1];
+					resultElement.style.color = "green";
+					resultElement.style.display = "inline-block";
+					
+					playAudio("http://54.251.238.67:8000/correctanswer.mp3");
+					playAudio("http://54.251.238.67:8000/correctkorean.mp3");
+					
+					// resultElement.classList.remove("highlight");
+					resultElement.classList.remove("correct-animation");
+					resultElement.classList.remove("shake");
+					resultElement.classList.remove("bounce");
+					
+					void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+					
+					// resultElement.classList.add('highlight');
+					resultElement.classList.add("correct-animation");
+					
+					var answer = inputElement.value;
+					inputElement.value  = "";
+					inputElement.placeholder  = "✅ " + answer;
+					
+					inputElement.disabled = true;
+					checkButton.disabled = true;
+					showtextButton.disabled = true;
+					
+					focusOnNextInput(inputElement);
+					
+					correctTranslations++;
+					
+					if (correctTranslations === numberOfElements-1) {
+						nextButton.disabled = false; // Enable the "Next" button
+						playAudio("http://54.251.238.67:8000/nextunlocked.mp3");
+						createNewTranslationSet();
+						
+						gh_headerjs.innerHTML = "Completed Words";
+						completedWords.push(Ljs[randomIndex][0][0] + " - " + Ljs[randomIndex][0][1]);
+						
+						var t = completedWords.join("<br>");
+						gh_contentjs.innerHTML = t;
+						
+						gh_contentjs.classList.remove("bounce2");
+						gh_contentjs.classList.remove("glow-text");
+						void gh_contentjs.offsetWidth;
+						gh_contentjs.classList.add("bounce2");
+						gh_contentjs.classList.add("glow-text");
+					}
+					
+					
+				  } else {
+					resultElement.textContent = 'Incorrect!';
+					resultElement.style.color = "red";
+					resultElement.style.display = "inline-block";
+					
+					playAudio("http://54.251.238.67:8000/wronganswer.mp3");
+					playAudio("http://54.251.238.67:8000/wrongkorean.mp3");
+					
+					// resultElement.classList.remove("highlight");
+					resultElement.classList.remove("correct-animation");
+					resultElement.classList.remove("shake");
+					resultElement.classList.remove("bounce");
+					
+					void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+					resultElement.classList.add("shake");
+					
+					var answer = inputElement.value;
+					inputElement.value  = "";
+					inputElement.placeholder  = "❌ " + answer;
+				  }
+				  
+				  
+				});
+				
+				inputElement.addEventListener('keydown', function (event) {
+				  if (event.key === 'Enter') {
+					event.preventDefault(); // Prevent the default Enter key behavior (e.g., new line)
+					checkButton.click(); // Simulate a click on the checkButton
+				  }
+				});	
+
+				showtextButton.addEventListener('click', function() {
+					
+					resultElement.textContent = Ljs[{{Litem}}][j][0];
+					resultElement.style.color = "#05696B";
+					resultElement.style.display = "inline-block";
+					resultElement.classList.add("bounce");
+					
+					playAudio("http://54.251.238.67:8000/showtext.mp3");
+					
+				});				
+				
+			  })(i, j);
+
+			}
+			
+			nextButton.disabled = false;
+		}		
+
+		function createNewTranslationSetFromGPT() {
+			div.innerHTML = ''; // Clear the existing content in the training area
+			correctTranslations = -1;
+
+
+			for (var i = 1, j = 0; i <= numberOfElements; i++, j++) {
+
+				// Create the heading
+				var heading = document.createElement("h3");
+				if (i == 1)
+					heading.textContent = "Base word";
+				else
+					heading.textContent = "Phrase / Sentence #" + j;
+				div.appendChild(heading);
+				
+				// Create the audio element
+				var audio = document.createElement("audio");
+				audio.src = "http://54.251.238.67:8000/tts/L" + randomIndex + j + ".mp3";
+				audio.controls = true;
+				div.appendChild(audio);
+				
+				var lineBreak = document.createElement("br");
+				div.appendChild(lineBreak);
+				
+				
+				// Create the input element
+				var input = document.createElement("input");
+				input.type = "text";
+				input.id = "text_word" + i;
+				input.placeholder = "Write your translation here.";
+				
+				div.appendChild(input);
+
+				// Create the "Check" button
+				var button = document.createElement("button");
+				button.id = "checkButton" + i;
+				button.textContent = "Check";
+				div.appendChild(button);
+
+				// Create the "Show Text" button
+				var showtext = document.createElement("button");
+				showtext.id = "showText" + i;
+				showtext.classList.add("showText");
+				showtext.textContent = "❔";
+				div.appendChild(showtext);				
+				
+				var lineBreak = document.createElement("br");
+				div.appendChild(lineBreak);
+				
+				// Create the status/result area
+				var result = document.createElement("h4");
+				result.id = "result" + i;
+				div.appendChild(result);
+				
+				// create debugging panel
+				var debugging = document.createElement("p");
+				debugging.style.color = "#cfc";
+				debugging.classList.add("debugging");
+				debugging.textContent = "[key for debugging] word" + i + ": " + Ljs[randomIndex][j][0] + " - " + Ljs[randomIndex][j][1];
+				div.appendChild(debugging);
+
+				if (i < numberOfElements){
+					var hr = document.createElement("hr");
+					div.appendChild(hr);
+				}
+				
+				const inputElement = document.getElementById('text_word' + i);
+				const resultElement = document.getElementById('result' + i);
+				const checkButton = document.getElementById('checkButton' + i);
+				const showtextButton = document.getElementById('showText' + i);
+				
+			  (function (i, j) {
+				checkButton.addEventListener('click', function () {
+				  // Get the value of the input element
+				  const inputValue = inputElement.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+
+				  // Use the captured k value
+				  // alert(Ljs[{{Litem}}][j][1]);
+
+				  if (inputValue.toLowerCase().replace(".", "") 
+						== Ljs[randomIndex][j][1].toLowerCase().replace(".", "")) {
+						
+					resultElement.textContent = 'Correct! ' +
+												Ljs[randomIndex][j][0] + " : " +
+												Ljs[randomIndex][j][1];
+					resultElement.style.color = "green";
+					resultElement.style.display = "inline-block";
+					
+					playAudio("http://54.251.238.67:8000/correctanswer.mp3");
+					playAudio("http://54.251.238.67:8000/correctkorean.mp3");
+					
+					// resultElement.classList.remove("highlight");
+					resultElement.classList.remove("correct-animation");
+					resultElement.classList.remove("shake");
+					resultElement.classList.remove("bounce");
+					
+					void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+					
+					// resultElement.classList.add('highlight');
+					resultElement.classList.add("correct-animation");
+					
+					var answer = inputElement.value;
+					inputElement.value  = "";
+					inputElement.placeholder  = "✅ " + answer;
+					
+					inputElement.disabled = true;
+					checkButton.disabled = true;
+					showtextButton.disabled = true;
+					
+					focusOnNextInput(inputElement);
+					
+					correctTranslations++;
+					
+					if (correctTranslations === numberOfElements-1) {
+						nextButton.disabled = false; // Enable the "Next" button
+						playAudio("http://54.251.238.67:8000/nextunlocked.mp3");
+						createNewTranslationSet();
+						
+						gh_headerjs.innerHTML = "Completed Words";
+						completedWords.push(Ljs[randomIndex][0][0] + " - " + Ljs[randomIndex][0][1]);
+						
+						var t = completedWords.join("<br>");
+						gh_contentjs.innerHTML = t;
+						
+						gh_contentjs.classList.remove("bounce2");
+						gh_contentjs.classList.remove("glow-text");
+						void gh_contentjs.offsetWidth;
+						gh_contentjs.classList.add("bounce2");
+						gh_contentjs.classList.add("glow-text");
+					}
+					
+					
+				  } else {
+					resultElement.textContent = 'Incorrect!';
+					resultElement.style.color = "red";
+					resultElement.style.display = "inline-block";
+					
+					playAudio("http://54.251.238.67:8000/wronganswer.mp3");
+					playAudio("http://54.251.238.67:8000/wrongkorean.mp3");
+					
+					// resultElement.classList.remove("highlight");
+					resultElement.classList.remove("correct-animation");
+					resultElement.classList.remove("shake");
+					resultElement.classList.remove("bounce");
+					
+					void resultElement.offsetWidth; // Trigger a reflow to restart the animation
+					resultElement.classList.add("shake");
+					
+					var answer = inputElement.value;
+					inputElement.value  = "";
+					inputElement.placeholder  = "❌ " + answer;
+				  }
+				  
+				  
+				});
+				
+				inputElement.addEventListener('keydown', function (event) {
+				  if (event.key === 'Enter') {
+					event.preventDefault(); // Prevent the default Enter key behavior (e.g., new line)
+					checkButton.click(); // Simulate a click on the checkButton
+				  }
+				});	
+
+				showtextButton.addEventListener('click', function() {
+					
+					resultElement.textContent = Ljs[{{Litem}}][j][0];
+					resultElement.style.color = "#05696B";
+					resultElement.style.display = "inline-block";
+					resultElement.classList.add("bounce");
+					
+					playAudio("http://54.251.238.67:8000/showtext.mp3");
+					
+				});				
+				
+			  })(i, j);
+
+			}
+			
+			nextButton.disabled = false;
+		}
+		
+		nextButton.addEventListener('click', function() {
+			createNewTranslationSet(); // Call the function to create a new set of elements
+			playAudio("http://54.251.238.67:8000/manualnext.mp3");
+		});
+		
+	});
+	
+	function getNewWord() {
+		// alert("neithan");
+		$('#loading').show();
+		$('#gptgeneratedwords').hide();
+		
+		$.ajax({
+			url: '/get_new_word',  // Django URL pattern
+			method: 'GET',
+			success: function(data) {
+				$('#loading').hide();
+				$('#gptgeneratedwords').show();
+				$('#gptgeneratedwords').html(data.word);
+				console.log(data.word);
+			}
+		});
+	}
+
+
+	</script>
+	
+	<!--
+	These are data pass tests. In case there is something wrong with passing of data, try to uncomment
+	these out and see if the bytes are getting torn during the passing. console.log is unreliable. 
+	
+	<h2> Data pass test </h2>
+
+	{% with myvar=4 %}
+	<p> printing myvar: {{myvar}} </p>
+	{% endwith %}
+
+	<p> varfromview: {{ vfv }} </p>
+	
+	<p> key1: {{ key1 }} </p>
+	<p> key2: {{ key2 }} </p>
+	<p> key3: {{ key3 }} </p>
+	<p> gptresponse: {{ gptresponse }} </p>
+	
+	-->
+	<br><br><br><br>
+	<br><br><br><br>
+	<br><br><br><br>
+	<!--
+	{% for i in L %}
+		{% if forloop.counter0 == Litem %}
+			{{i}}
+		{% endif %}
+	{% endfor %}
+	
+	<p> Litem: {{ Litem }} </p>
+	-->
+		
+	</body>
+</html>
